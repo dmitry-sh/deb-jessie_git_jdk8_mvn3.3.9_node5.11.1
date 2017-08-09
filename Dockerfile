@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y wget curl git
 # Install Oracle JDK 8u114
 
 RUN cd /tmp && \
-    curl -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" -k "http://download.oracle.com/otn-pub/java/jdk/8u144-b01/jdk-8u144-linux-x64.tar.gz" && \
+    curl -v -j -k -L -H "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz" && \
     mkdir /srv/java && \
     tar xf jdk-8u144-linux-x64.tar.gz -C /srv/java && \
     rm -f jdk-8u144-linux-x64.tar.gz && \
