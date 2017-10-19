@@ -1,15 +1,15 @@
 FROM debian:jessie
 USER root
 
-RUN apt-get update && apt-get install -y wget curl git
+RUN apt-get update && apt-get install -y wget curl git bzip2
 
 # Install Oracle JDK 8u114
 
 RUN cd /tmp && \
-    curl -v -j -k -L -H "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz" && \
+    wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz && \
     mkdir /srv/java && \
-    tar xf jdk-8u144-linux-x64.tar.gz -C /srv/java && \
-    rm -f jdk-8u144-linux-x64.tar.gz && \
+    tar xf jdk-8u151-linux-x64.tar.gz -C /srv/java && \
+    rm -f jdk-8u151-linux-x64.tar.gz && \
     ln -s /srv/java/jdk* /srv/java/jdk && \
     ln -s /srv/java/jdk /srv/java/jvm
 
