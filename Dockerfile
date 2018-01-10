@@ -37,5 +37,15 @@ RUN echo "# Installing Maven " && echo ${MAVEN_VERSION} && \
 # Install NodeJS
 
 RUN echo "# Installing NodeJS v5.11.1" && \
-    wget http://nodejs.org/dist/v5.11.1/node-v5.11.1-linux-x64.tar.gz && \
-    tar -C /usr/local --strip-components 1 -xzf node-v5.11.1-linux-x64.tar.gz
+    curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+    apt-get install -y nodejs && \
+
+# Install Yarn
+
+RUN apt-get update && apt-get install -y curl apt-transport-https && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install -y yarn
+
+RUN echo
+    
