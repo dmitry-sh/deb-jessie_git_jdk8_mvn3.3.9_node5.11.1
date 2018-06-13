@@ -3,13 +3,13 @@ USER root
 
 RUN apt-get update && apt-get install -y wget curl git bzip2
 
-# Install Oracle JDK 8u114
+# Install Oracle JDK 8
 
 RUN cd /tmp && \
-    wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz && \
+    wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz && \
     mkdir /srv/java && \
-    tar xf jdk-8u151-linux-x64.tar.gz -C /srv/java && \
-    rm -f jdk-8u151-linux-x64.tar.gz && \
+    tar xf jdk-8u171-linux-x64.tar.gz -C /srv/java && \
+    rm -f jdk-8u171-linux-x64.tar.gz && \
     ln -s /srv/java/jdk* /srv/java/jdk && \
     ln -s /srv/java/jdk /srv/java/jvm
 
@@ -36,7 +36,7 @@ RUN echo "# Installing Maven " && echo ${MAVEN_VERSION} && \
 
 # Install NodeJS
 
-RUN echo "# Installing NodeJS v5.11.1" && \
+RUN echo "# Installing NodeJS v8" && \
     curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install -y nodejs
 
