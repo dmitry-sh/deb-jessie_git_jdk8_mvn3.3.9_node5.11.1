@@ -37,7 +37,7 @@ RUN echo "# Installing Maven " && echo ${MAVEN_VERSION} && \
 # Install NodeJS
 
 RUN echo "# Installing NodeJS v5.11.1" && \
-    curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install -y nodejs
 
 # Install Yarn
